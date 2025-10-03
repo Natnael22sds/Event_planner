@@ -119,7 +119,7 @@ try {
   
   <div class="relative z-10 max-w-4xl mx-auto">
     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold glow mb-4">
-     Science Museum
+      Space Science & Geospatial Institute
     </h1>
 <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 mb-8 border border-gray-700 shadow-xl overflow-hidden relative">
     <!-- Decorative elements -->
