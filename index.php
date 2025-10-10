@@ -205,7 +205,7 @@ try {
       
       <!-- Logo instead of text -->
       <a href="#" class="hidden md:block mr-10">
-        <img src="src/images/ssgiLogo.webp" alt="SSGI Logo" class="h-10 w-auto">
+        <img src="images/ssgiLogo.webp" alt="SSGI Logo" class="h-10 w-auto">
       </a>
       
       <div class="flex flex-wrap justify-center gap-4 md:gap-6">
@@ -553,7 +553,7 @@ try {
       <!-- Logo instead of SSGI 2025 -->
       <div class="mb-8">
         <a href="#" class="inline-block mb-4">
-          <img src="src/images/ssgiLogo.webp" alt="SSGI Logo" class="h-12 w-auto">
+          <img src="images/ssgiLogo.webp" alt="SSGI Logo" class="h-12 w-auto">
         </a>
         <p class="text-gray-400">
           The premier conference for space science and geospatial technology professionals, researchers, and enthusiasts.

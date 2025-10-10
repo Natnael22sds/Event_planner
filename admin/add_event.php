@@ -14,22 +14,9 @@ $user = $stmt->fetch();
 if ($user['role'] !== 'admin') {
     die('Access denied. You do not have permission to perform this action.');
 }
-
-
-
-
-
 $error = '';
 $success = '';
 
-// Simple function to send HTML email
-function send_email($to, $subject, $htmlMessage) {
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: no-reply@yourdomain.com" . "\r\n"; // Change this to your sender email
-
-    mail($to, $subject, $htmlMessage, $headers);
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
@@ -53,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title, $description, $start_datetime, $end_datetime, $location, $category, $_SESSION['user_id']
         ]);
         $event_id = $pdo->lastInsertId();
+        header('Location: dashboard.php');
 
         // Handle attachment upload if any
         if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
@@ -69,30 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        if (!$error) {
-            // Send email notifications to all eusers except organizer
-            $stmtEmails = $pdo->prepare("SELECT email FROM eusers WHERE id != ?");
-            $stmtEmails->execute([$_SESSION['user_id']]);
-            $emails = $stmtEmails->fetchAll(PDO::FETCH_COLUMN);
-
-            $subject = "New Event Created: " . htmlspecialchars($title);
-            $message = "
-                <h2>New Event Created</h2>
-                <p><strong>Title:</strong> " . htmlspecialchars($title) . "</p>
-                <p><strong>Description:</strong><br>" . nl2br(htmlspecialchars($description)) . "</p>
-                <p><strong>When:</strong> {$start_datetime} to {$end_datetime}</p>
-                <p><strong>Location:</strong> " . htmlspecialchars($location) . "</p>
-                <p>Please check the event planner for more details.</p>
-            ";
-
-            foreach ($emails as $email) {
-                send_email($email, $subject, $message);
-            }
-
-            $success = "Event added successfully!";
-            header("Location: dashboard.php");
-            exit;
-        }
+        
     }
 }
 ?>
