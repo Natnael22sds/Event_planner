@@ -16,9 +16,6 @@ if ($user['role'] !== 'admin') {
     die('Access denied. You do not have permission to perform this action.');
 }
 
-
-
-
 $error = '';
 $success = '';
 
@@ -71,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $targetFile = $uploadDir . uniqid() . "_" . $filename;
 
             if (move_uploaded_file($_FILES['attachment']['tmp_name'], $targetFile)) {
-                $stmt = $pdo->prepare("INSERT INTO event_attachments (event_id, filename, filepath) VALUES (?, ?, ?)");
+                $stmt = $pdo->prepare("INSERT INTO event_attachments (event_id, file_name, file_path) VALUES (?, ?, ?)");
                 $stmt->execute([$event_id, $filename, $targetFile]);
             } else {
                 $error = "Failed to upload attachment.";
@@ -94,10 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Check the event planner for more details.</p>
             ";
 
-            foreach ($emails as $email) {
-                send_email($email, $subject, $message);
-            }
-
+         
             $success = "Event updated successfully and notifications sent!";
             // Refresh event data
             $stmt = $pdo->prepare("SELECT * FROM events WHERE id = ?");

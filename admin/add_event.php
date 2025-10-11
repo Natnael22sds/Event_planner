@@ -43,19 +43,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: dashboard.php');
 
         // Handle attachment upload if any
-        if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = __DIR__ . '/uploads/';
-            if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
-            $filename = basename($_FILES['attachment']['name']);
-            $targetFile = $uploadDir . uniqid() . "_" . $filename;
+        // if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
+        //     $uploadDir = __DIR__ . '/uploads/';
+        //     if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+        //     $filename = basename($_FILES['attachment']['name']);
+        //     $targetFile = $uploadDir . uniqid() . "_" . $filename;
 
-            if (move_uploaded_file($_FILES['attachment']['tmp_name'], $targetFile)) {
-                $stmt = $pdo->prepare("INSERT INTO event_attachments (event_id, filename, filepath) VALUES (?, ?, ?)");
-                $stmt->execute([$event_id, $filename, $targetFile]);
-            } else {
-                $error = "Failed to upload attachment.";
-            }
-        }
+        //     if (move_uploaded_file($_FILES['attachment']['tmp_name'], $targetFile)) {
+        //         $stmt = $pdo->prepare("INSERT INTO event_attachments (event_id, filename, filepath) VALUES (?, ?, ?)");
+        //         $stmt->execute([$event_id, $filename, $targetFile]);
+        //     } else {
+        //         $error = "Failed to upload attachment.";
+        //     }
+        // }
 
         
     }

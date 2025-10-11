@@ -14,12 +14,12 @@ try {
         // Convert datetime into JS-friendly format (YYYY-MM-DDTHH:MM:SS)
         $jsEventDate = date('Y-m-d\TH:i:s', strtotime($eventDate));
     } else {
-        // Fallback values if no event found
-        $eventTitle   = 'Sample Event';
+        // If no event found
+        $eventTitle   = 'No event for now';
         $jsEventDate  = '2025-08-20T09:00:00';
     }
 } catch (PDOException $e) {
-    $eventTitle   = 'Sample Event';
+    $eventTitle   = 'Display Error';
     $jsEventDate  = '2025-08-20T09:00:00';
 }
 ?>
@@ -627,7 +627,6 @@ try {
 
 <!-- Countdown Script -->
 <script>
-
 
 // Get the event date from PHP
 const eventDate = new Date("<?php echo $jsEventDate; ?>").getTime();

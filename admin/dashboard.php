@@ -1,5 +1,5 @@
 <?php
-ob_start();  // Start output buffering to prevent header issues
+ob_start();  
 session_start();
 require '../config.php';
 
