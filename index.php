@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-// Fetch latest event title and date from database using PDO
+// Fetch latest event title and date from database
 try {
     $stmt = $pdo->query("SELECT title, start_datetime, location FROM events ORDER BY start_datetime DESC LIMIT 1");
     $eventData = $stmt->fetch(PDO::FETCH_ASSOC);

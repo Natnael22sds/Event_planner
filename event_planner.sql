@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2025 at 04:36 PM
+-- Generation Time: Oct 11, 2025 at 09:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,8 @@ INSERT INTO `eusers` (`id`, `name`, `email`, `password_hash`, `role`, `departmen
 (1, 'Natnael', 'mitikunathan@gmail.com', '$2y$10$Q6OINpiuDZr3kW/Hbp.zU.RFvjs1h.NlKMdn3.R6e96GKvQfg18Cq', 'admin', NULL, '2025-08-12 21:42:32', '2025-08-12 22:33:42'),
 (2, '', 'bekele@gmail.com', '$2y$10$tKkL3BQ6XBeH94K27OHIv.MXG9sfsr5xc208IqrwoJK/Rz2noKyuu', 'user', NULL, '2025-08-12 22:42:54', '2025-08-12 22:42:54'),
 (6, 'Yeabsira Goitom', 'abbytesfamichael@gmail.com', '$2y$10$MmUkWavsYONNg89CQdstd.nbe4Q48u8nSM5UsiphHjIR2uBLloMbW', 'admin', NULL, '2025-08-17 12:58:13', '2025-08-17 12:58:13'),
-(7, 'Natnael Mitiku', 'mitikunathans@gmail.com', '$2y$10$KvXZNUa7a6aDv0oSf/RaFuCy/y75RHe5BprLD1oEfRHbpK2UPhso.', 'user', NULL, '2025-08-17 14:05:19', '2025-08-17 14:05:19');
+(7, 'Natnael Mitiku', 'mitikunathans@gmail.com', '$2y$10$KvXZNUa7a6aDv0oSf/RaFuCy/y75RHe5BprLD1oEfRHbpK2UPhso.', 'user', NULL, '2025-08-17 14:05:19', '2025-08-17 14:05:19'),
+(8, 'Nahom Mitiku', 'Nahom@gmail.com', '$2y$10$SZXVaWmG2cl.hjbvqiHIYeb2wCGtji8NkvGOqy/R9Wn0TKGVe9vo.', 'user', NULL, '2025-10-10 22:25:23', '2025-10-10 22:25:23');
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `description`, `start_datetime`, `end_datetime`, `location`, `category`, `organizer_id`, `created_at`, `updated_at`) VALUES
-(7, 'Abby\'s new event', 'Hello checking if it works', '2025-08-20 16:46:00', '2025-08-24 16:46:00', 'Addis Ababa', 'Meeting', 6, '2025-08-17 13:46:53', '2025-08-17 13:46:53');
+(7, 'Abby\'s new event', 'Hello checking if it works', '2025-08-20 16:46:00', '2025-08-24 16:46:00', 'Addis Ababa', 'Meeting', 6, '2025-08-17 13:46:53', '2025-08-17 13:46:53'),
+(15, 'check', 'check', '2025-10-12 00:44:00', '2025-10-15 00:45:00', 'Addis Ababa', 'Training', 1, '2025-10-10 21:45:13', '2025-10-10 21:45:13'),
+(18, 'checker', 'checker', '2025-10-11 01:36:00', '2025-10-13 01:36:00', 'Addis Ababa', 'Meeting', 1, '2025-10-10 22:39:35', '2025-10-10 22:39:35');
 
 -- --------------------------------------------------------
 
@@ -130,7 +133,9 @@ CREATE TABLE `event_rsvps` (
 
 INSERT INTO `event_rsvps` (`id`, `event_id`, `user_id`, `rsvp_status`, `created_at`) VALUES
 (5, 7, 2, '', '2025-08-17 13:47:20'),
-(6, 7, 7, '', '2025-08-17 14:05:38');
+(6, 7, 7, '', '2025-08-17 14:05:38'),
+(7, 15, 2, '', '2025-10-10 22:35:17'),
+(8, 18, 2, 'maybe', '2025-10-10 22:43:17');
 
 --
 -- Indexes for dumped tables
@@ -181,13 +186,13 @@ ALTER TABLE `event_rsvps`
 -- AUTO_INCREMENT for table `eusers`
 --
 ALTER TABLE `eusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `event_attachments`
@@ -205,7 +210,7 @@ ALTER TABLE `event_attendees`
 -- AUTO_INCREMENT for table `event_rsvps`
 --
 ALTER TABLE `event_rsvps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
