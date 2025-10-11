@@ -15,6 +15,7 @@ try {
         $jsEventDate = date('Y-m-d\TH:i:s', strtotime($eventDate));
     } else {
         // If no event found
+        $eventLocation = 'Empty';
         $eventTitle   = 'No event for now';
         $jsEventDate  = '2025-08-20T09:00:00';
     }
